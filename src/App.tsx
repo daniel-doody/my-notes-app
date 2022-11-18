@@ -9,6 +9,7 @@ import { NoteList } from "./NoteList";
 import { NoteLayout } from "./NoteLayout";
 import { Note } from "./Note";
 import { EditNote } from "./EditNote";
+import Footer from "./Footer";
 
 export type Note = {
   id: string;
@@ -98,45 +99,49 @@ function App() {
   }
 
   return (
-    <Container className="my-4 mx-12">
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <NoteList
-              notes={notesWithTags}
-              availableTags={tags}
-              onUpdateTag={updateTag}
-              onDeleteTag={deleteTag}
-            />
-          }
-        />
-        <Route
-          path="/new"
-          element={
-            <NewNote
-              onSubmit={onCreateNote}
-              onAddTag={addTag}
-              availableTags={tags}
-            />
-          }
-        />
-        <Route path="/:id" element={<NoteLayout notes={notesWithTags} />}>
-          <Route index element={<Note onDelete={onDeleteNote} />} />
+    <>
+      <Container className="my-4 mx-12">
+        <Routes>
           <Route
-            path="edit"
+            path="/"
             element={
-              <EditNote
-                onSubmit={onUpdateNote}
+              <NoteList
+                notes={notesWithTags}
+                availableTags={tags}
+                onUpdateTag={updateTag}
+                onDeleteTag={deleteTag}
+              />
+            }
+          />
+          <Route
+            path="/new"
+            element={
+              <NewNote
+                onSubmit={onCreateNote}
                 onAddTag={addTag}
                 availableTags={tags}
               />
             }
           />
-        </Route>
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
-    </Container>
+          <Route path="/:id" element={<NoteLayout notes={notesWithTags} />}>
+            <Route index element={<Note onDelete={onDeleteNote} />} />
+            <Route
+              path="edit"
+              element={
+                <EditNote
+                  onSubmit={onUpdateNote}
+                  onAddTag={addTag}
+                  availableTags={tags}
+                />
+              }
+            />
+          </Route>
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </Container>
+
+      <Footer />
+    </>
   );
 }
 
