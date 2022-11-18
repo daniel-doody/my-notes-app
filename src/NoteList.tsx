@@ -59,15 +59,21 @@ export function NoteList({
   }, [title, selectedTags, notes]);
 
   return (
-    <>
+    <div className="flex-col max-w-4xl mt-16 border shadow-md rounded-md pb-28 border-blue-500 p-6 justify-center items-center">
       <Row className="align-items-center mb-4">
         <Col>
-          <h1>My Notes</h1>
+          <h1 className="mb-1 text-2xl text-blue-500 font-bold">My Notes</h1>
+          <div className="mb-4 border-b border-blue-600 w-28 ml-[-4px]" />
         </Col>
         <Col xs="auto">
           <Stack gap={2} direction="horizontal">
             <Link to="/new">
-              <Button variant="primary">New Note</Button>
+              <Button
+                className="bg-blue-500 mt-12 shadow-md border-blue-600 hover:bg-blue-600 px-4 hover:scale-105"
+                variant="primary"
+              >
+                New Note
+              </Button>
             </Link>
             {/* <Button
               onClick={() => setEditTagsModalIsOpen(true)}
@@ -127,7 +133,7 @@ export function NoteList({
         handleClose={() => setEditTagsModalIsOpen(false)}
         availableTags={availableTags}
       />
-    </>
+    </div>
   );
 }
 
