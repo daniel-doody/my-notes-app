@@ -59,7 +59,7 @@ export function NoteList({
   }, [title, selectedTags, notes]);
 
   return (
-    <div className="flex-col max-w-4xl mt-16 border shadow-md rounded-md pb-28 border-blue-500 p-6 justify-center items-center">
+    <div className="flex-col max-w-4xl mt-16 border shadow-md rounded-md pb-28 border-blue-500 p-6">
       <Row className="align-items-center mb-4">
         <Col>
           <h1 className="mb-1 text-2xl text-blue-500 font-bold">My Notes</h1>
@@ -69,7 +69,7 @@ export function NoteList({
           <Stack gap={2} direction="horizontal">
             <Link to="/new">
               <Button
-                className="bg-blue-500 mt-12 shadow-md border-blue-600 hover:bg-blue-600 px-4 hover:scale-105"
+                className="bg-blue-500 shadow-md border-blue-600 hover:bg-blue-600 px-4 hover:scale-105"
                 variant="primary"
               >
                 New Note
@@ -88,7 +88,7 @@ export function NoteList({
         <Row className="mb-4">
           <Col>
             <Form.Group controlId="title">
-              <Form.Label>Search title</Form.Label>
+              <Form.Label>Search by title</Form.Label>
               <Form.Control
                 type="text"
                 value={title}
@@ -142,14 +142,16 @@ function NoteCard({ id, title, tags }: SimplifiedNote) {
     <Card
       as={Link}
       to={`/${id}`}
-      className={`h-100 text-reset text-decoration-none ${styles.card}`}
+      className={`h-100 text-reset text-decoration-none hover:bg-blue-50 shadow-sm hover:shadow-md ${styles.card}`}
     >
       <Card.Body>
         <Stack
           gap={2}
           className="align-items-center justify-content-center h-100"
         >
-          <span className="fs-5">{title}</span>
+          <span className="fs-5 text-blue-500 font-medium py-4 px-6">
+            {title}
+          </span>
           {tags.length > 0 && (
             <Stack
               gap={1}
